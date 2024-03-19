@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QuanLiThietBi.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 using QuanLiThietBi.Application.Interfaces;
 using System.Diagnostics;
 using System.Web.Mvc;

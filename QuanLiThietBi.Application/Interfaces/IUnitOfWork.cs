@@ -10,6 +10,13 @@ namespace QuanLiThietBi.Application.Interfaces
     {
         IRepository<TblCategory> CategoryRepository { get; }
         IRepository<TblProduct> ProductRepository { get; }
+        IRepository<TblComponent> ComponentRepository { get; }
+        IRepository<TblUser> UserRepository { get; }
+        IRepository<TblRole> RoleRepository { get; }
+        IRepository<TblOrder> OrderRepository { get; }
+        IRepository<TblLocation> LocationRepository { get; }
+        IRepository<TblEmployee> EmployeeRepository { get; }
+        IRepository<TblBorrowing> BorrowingRepository { get; }
         int SaveChanges();
     }
 }

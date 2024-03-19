@@ -1,10 +1,13 @@
 global using QuanLiThietBi.Models;
+using QuanLiThietBi.Application.Interfaces;
+using QuanLiThietBi.Infrastructure.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<qlthietbiContext>();
+builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
