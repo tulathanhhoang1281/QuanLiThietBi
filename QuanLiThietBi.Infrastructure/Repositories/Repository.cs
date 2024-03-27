@@ -43,7 +43,7 @@ namespace QuanLiThietBi.Infrastructure.Repositories
 
         public TEntity GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _context.Set<TEntity>().Find(id);
         }
     }
 }

@@ -1,15 +1,17 @@
 ﻿@model IEnumerable<QuanLiThietBi.Domain.Models.TblCategory>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh mục thiết bị";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Danh mục thiết bị</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Thêm danh mục</a>
 </p>
-<table class="table">
+<div class="table table-responsive">
+    <table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
@@ -31,11 +33,80 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-sm btn-info">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.CategoryId" class="btn btn-sm btn-primary ml-1">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn bt-sm btn-danger ml-1">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+@* <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        color: #333333;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #007bff;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .table {
+        width: 900px;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+        .table th, .table td {
+            padding: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+
+    .fa-icon {
+        font-size: 20px;
+        color: #007bff;
+        margin-right: 5px;
+    }
+
+    #add-category-button {
+        float: right !important;
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+
+    .dashboard-heading {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 4px;
+        color: #007bff;
+    }
+</style> *@

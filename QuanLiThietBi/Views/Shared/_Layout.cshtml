@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href=@Url.Content("~/css/sb-admin-2.css") rel="stylesheet" type="text/css" />
 </head>
 <body>
     <!-- Page Wrapper -->
@@ -61,8 +62,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Quản lý danh mục</a>
-                        <a class="collapse-item" href="../Views/Products/Index.cshtml">Quản lý sản phẩm thiết bị</a>
+                        <a class="collapse-item" href="../Categories/Index">Quản lý danh mục</a>
+                        <a class="collapse-item" href="../Products/Index">Quản lý sản phẩm thiết bị</a>
                         <a class="collapse-item" href="buttons.html">Quản lý tài sản</a>
                         <a class="collapse-item" href="buttons.html">Quản lý chi phí</a>
                         <a class="collapse-item" href="buttons.html">Quản lý phiếu bảo trì</a>
@@ -73,18 +74,17 @@
 
             <!-- Nav Item - Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                   aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="../Components/Index">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Linh kiện thiết bị</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+@*                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="utilities-color.html">Quản lý danh mục</a>
                         <a class="collapse-item" href="utilities-color.html">Quản lý linh kiện</a>
                     </div>
-                </div>
+                </div> *@
             </li>
 
             <!-- Divider -->
@@ -97,11 +97,11 @@
 
             <!-- Nav Item - Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="../Warehouses/Index">
                     <i class="fas fa-warehouse"></i>
                     <span>Quản lý địa điểm kho</span>
                 </a>
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="../Stores/Index">
                     <i class="fas fa-store"></i>
                     <span>Quản lý địa điểm cửa hàng</span>
                 </a>
@@ -237,7 +237,7 @@
                             </div>
                         </li>
                     </ul>
-
+                    @RenderSection("Navbar", required: false)
                 </nav>
                 <!-- End of Topbar -->
                 <div class="container">
@@ -249,6 +249,7 @@
                     &copy; 2024 - HỆ THỐNG QUẢN LÝ THIẾT BỊ
                     </div>
                     </footer> *@
+                    @await RenderSectionAsync("Scripts", required: false)
                 </div>
 
             </div>
@@ -256,7 +257,7 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        @await RenderSectionAsync("Scripts", required: false)
+
 
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>

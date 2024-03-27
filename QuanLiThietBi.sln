@@ -5,14 +5,17 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLiThietBi", "QuanLiThietBi\QuanLiThietBi.csproj", "{46D97C52-263B-416F-94B9-951001712955}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiThietBi.Domain", "QuanLiThietBi.Domain\QuanLiThietBi.Domain.csproj", "{9AF6CF44-DF47-4150-8732-C79D26F6FA7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLiThietBi.Domain", "QuanLiThietBi.Domain\QuanLiThietBi.Domain.csproj", "{9AF6CF44-DF47-4150-8732-C79D26F6FA7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiThietBi.Application", "QuanLiThietBi.Application\QuanLiThietBi.Application.csproj", "{000D8D9A-E978-4ED1-8750-29F426D3FB0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLiThietBi.Application", "QuanLiThietBi.Application\QuanLiThietBi.Application.csproj", "{000D8D9A-E978-4ED1-8750-29F426D3FB0E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{46D97C52-263B-416F-94B9-951001712955} = {46D97C52-263B-416F-94B9-951001712955}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiThietBi.Infrastructure", "QuanLiThietBi.Infrastructure\QuanLiThietBi.Infrastructure.csproj", "{DE437229-8793-4894-AC7D-307E9AE8401F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLiThietBi.Infrastructure", "QuanLiThietBi.Infrastructure\QuanLiThietBi.Infrastructure.csproj", "{DE437229-8793-4894-AC7D-307E9AE8401F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{46D97C52-263B-416F-94B9-951001712955} = {46D97C52-263B-416F-94B9-951001712955}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

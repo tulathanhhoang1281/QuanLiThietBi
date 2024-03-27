@@ -1,0 +1,48 @@
+﻿@model IEnumerable<QuanLiThietBi.Domain.Models.TblLocation>
+
+@{
+    ViewData["Title"] = "Quản lí địa điểm cửa hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Quản lí địa điểm cửa hàng</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm địa điểm</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.LocationId" class="btn btn-sm btn-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.LocationId" class="btn btn-sm btn-primary ml-1">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.LocationId" class="btn bt-sm btn-danger ml-1">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<QuanLiThietBi.Domain.Models.TblComponent>
+
+@{
+    ViewData["Title"] = "Quản lí linh kiện thiết bị";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Quản lí linh kiện thiết bị</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm linh kiện</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dvt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dvt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Manufacturer)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ComponentId" class="btn btn-sm btn-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ComponentId" class="btn btn-sm btn-primary ml-1">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ComponentId" class="btn bt-sm btn-danger ml-1">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

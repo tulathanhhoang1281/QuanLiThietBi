@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<QuanLiThietBi.Domain.Models.TblProduct>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Quản lý sản phẩm thiết bị";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1 class="dashboard-heading">Quản lý sản phẩm thiết bị</h1>
 
 <p>
-    <a asp-action="Create">Thêm sản phẩm</a>
+    <a asp-action="Create" id="add-category-button" class="btn btn-primary">Thêm sản phẩm</a>
 </p>
-<table class="table">
+<div class="table-responsive">
+    <table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -74,11 +75,74 @@
                 @Html.DisplayFor(modelItem => item.Location.Description)
             </td>
             <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProductId"><i class="fas fa-edit"></i></a> |
-                    <a asp-action="Details" asp-route-id="@item.ProductId"><i class="fas fa-info-circle"></i></a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProductId"><i class="fas fa-trash"></i></a>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-sm btn-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary ml-1">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn bt-sm btn-danger ml-1">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 10%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 10%;
+        }
+
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 10%;
+        }
+
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 10%;
+        }
+
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 10%;
+        }
+
+        th:nth-child(6),
+        td:nth-child(6) {
+            width: 10%;
+        }
+
+        th:nth-child(7),
+        td:nth-child(7) {
+            width: 10%;
+        }
+
+        th:nth-child(8),
+        td:nth-child(8) {
+            width: 10%;
+        }
+
+        th:nth-child(9),
+        td:nth-child(9) {
+            width: 10%;
+        }
+
+        th:nth-child(10),
+        td:nth-child(10) {
+            width: 10%;
+        }
+</style>

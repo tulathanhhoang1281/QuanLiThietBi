@@ -1,11 +1,20 @@
 global using QuanLiThietBi.Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using QuanLiThietBi.Application.Interfaces;
+using QuanLiThietBi.Infrastructure.UnitOfWork;
 using QuanLiThietBi.Models;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<qlthietbiContext>();
+builder.Services.AddDbContext<qlthietbiContext>(option =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    option.UseSqlServer(connectionString);
+});
+//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 var app = builder.Build();
 
