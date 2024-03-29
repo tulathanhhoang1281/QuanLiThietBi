@@ -1,0 +1,54 @@
+﻿@model IEnumerable<QuanLiThietBi.Domain.Models.TblUser>
+
+@{
+    ViewData["Title"] = "Quản lí người dùng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Quản lí người dùng</h1>
+
+<p>
+    <a asp-action="Create">Thêm người dùng</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-sm btn-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.UserId" class="btn btn-sm btn-primary ml-1">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.UserId" class="btn bt-sm btn-danger ml-1">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

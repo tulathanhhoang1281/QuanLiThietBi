@@ -54,6 +54,7 @@ namespace QuanLiThietBi.Infrastructure.UnitOfWork
 
         public IRepository<TblBorrowing> BorrowingRepository => _borrowingRepository;
 
+
         public int SaveChanges()
         {
             return _context.SaveChanges();
