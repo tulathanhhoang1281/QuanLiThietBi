@@ -54,8 +54,8 @@ namespace QuanLiThietBi.Controllers
         // GET: Borrowings/Create
         public IActionResult Create()
         {
-            ViewData["ProductId"] = new SelectList(_context.TblProducts, "ProductId", "Manufacturer");
-            ViewData["UserId"] = new SelectList(_context.TblUsers, "UserId", "Password");
+            ViewData["ProductId"] = new SelectList(_context.TblProducts, "ProductId", "Name");
+            ViewData["UserId"] = new SelectList(_context.TblUsers, "UserId", "Username");
             return View();
         }
 
@@ -68,18 +68,29 @@ namespace QuanLiThietBi.Controllers
         {
             if (ModelState.IsValid)
             {
-                tblBorrowing.Status = 1;
-                _context.Add(tblBorrowing);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (tblBorrowing.BorrowDate <= DateTime.Now) // Validate borrow date
+                {
+                    tblBorrowing.Status = 1;
+                    _context.Add(tblBorrowing);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ModelState.AddModelError("BorrowDate", "Borrow date cannot be in the future.");
+                }
             }
-            ViewData["ProductId"] = new SelectList(_context.TblProducts, "ProductId", "Manufacturer", tblBorrowing.ProductId);
-            ViewData["UserId"] = new SelectList(_context.TblUsers, "UserId", "Password", tblBorrowing.UserId);
+            ViewData["ProductId"] = new SelectList(_context.TblProducts, "ProductId", "Name", tblBorrowing.ProductId);
+            ViewData["UserId"] = new SelectList(_context.TblUsers, "UserId", "Username", tblBorrowing.UserId);
             return View(tblBorrowing);
         }
 
-        public IActionResult Approve(int id)
+        public IActionResult Approve(int? id)
         {
+            if (id == null || _context.TblBorrowings == null)
+            {
+                return NotFound();
+            }
             var borrowings = _context.TblBorrowings.Find(id);
             if(borrowings != null)
             {
@@ -89,19 +100,28 @@ namespace QuanLiThietBi.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Reject(int id)
+        public IActionResult Reject(int? id)
         {
+            if (id == null || _context.TblBorrowings == null)
+            {
+                return NotFound();
+            }
             var borrowing = _context.TblBorrowings.Find(id);
             if (borrowing != null)
             {
                 _context.TblBorrowings.Remove(borrowing); //Đã từ chối
+                borrowing.Status = 3;
                 _context.SaveChanges();
             }
             return RedirectToAction("Index");
         }
 
-        public IActionResult Return(int id)
+        public IActionResult Return(int? id)
         {
+            if (id == null || _context.TblBorrowings == null)
+            {
+                return NotFound();
+            }
             var borrowing = _context.TblBorrowings.Find(id);
             if (borrowing != null)
             {

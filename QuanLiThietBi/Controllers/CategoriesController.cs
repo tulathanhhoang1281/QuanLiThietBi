@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using QuanLiThietBi.Domain.Models;
+using QuanLiThietBi.Infrastructure.UnitOfWork;
 using QuanLiThietBi.Models;
 
 namespace QuanLiThietBi.Controllers
@@ -13,10 +15,12 @@ namespace QuanLiThietBi.Controllers
     public class CategoriesController : Controller
     {
         private readonly qlthietbiContext _context;
+        private readonly UnitOfWork _unitOfWork;
 
-        public CategoriesController(qlthietbiContext context)
+        public CategoriesController(qlthietbiContext context, UnitOfWork unitOfWork )
         {
             _context = context;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: Categories

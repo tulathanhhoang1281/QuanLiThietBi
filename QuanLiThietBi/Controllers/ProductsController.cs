@@ -15,7 +15,6 @@ namespace QuanLiThietBi.Controllers
     public class ProductsController : Controller
     {
         private readonly qlthietbiContext _context;
-        private readonly IUnitOfWork _unitOfWork;
 
         public ProductsController(qlthietbiContext context)
         {
@@ -27,12 +26,6 @@ namespace QuanLiThietBi.Controllers
         {
             var qlthietbiContext = _context.TblProducts.Include(t => t.Category).Include(t => t.Location);
             return View(await qlthietbiContext.ToListAsync());
-            //var products = _unitOfWork.ProductRepository.GetAll();
-            //if(products == null)
-            //{
-            //    return NotFound();
-            //}
-            //return View(products);
         }
 
         // GET: Products/Details/5
@@ -42,15 +35,10 @@ namespace QuanLiThietBi.Controllers
             {
                 return NotFound();
             }
-            //if (id == null || _unitOfWork == null || _unitOfWork.ProductRepository == null)
-            //{
-            //    return NotFound();
-            //}
             var tblProduct = await _context.TblProducts
                 .Include(t => t.Category)
                 .Include(t => t.Location)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
-            //var tblProduct = _unitOfWork.ProductRepository.GetByID(id.Value);
             if (tblProduct == null)
             {
                 return NotFound();
@@ -183,5 +171,6 @@ namespace QuanLiThietBi.Controllers
         {
           return (_context.TblProducts?.Any(e => e.ProductId == id)).GetValueOrDefault();
         }
+
     }
 }

@@ -31,11 +31,6 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             _context.Set<TEntity>().Remove(entity);
         }
 
-        public TEntity GetById(int id)
-        {
-            return _context.Set<TEntity>().Find(id);
-        }
-
         public IEnumerable<TEntity> GetAll()
         {
             return _context.Set<TEntity>().ToList();
@@ -44,6 +39,20 @@ namespace QuanLiThietBi.Infrastructure.Repositories
         public TEntity GetByID(int id)
         {
             return _context.Set<TEntity>().Find(id);
+        }
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        async Task<TEntity> IRepository<TEntity>.GetByID(int id)
+        {
+            return await _context.Set<TEntity>().FindAsync(id);
+        }
+
+        async Task<IEnumerable<TEntity>> IRepository<TEntity>.GetAll()
+        {
+            return await _context.Set<TEntity>().ToListAsync();
         }
     }
 }

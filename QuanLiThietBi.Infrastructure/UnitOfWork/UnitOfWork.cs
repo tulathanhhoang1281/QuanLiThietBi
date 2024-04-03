@@ -55,9 +55,9 @@ namespace QuanLiThietBi.Infrastructure.UnitOfWork
         public IRepository<TblBorrowing> BorrowingRepository => _borrowingRepository;
 
 
-        public int SaveChanges()
+        public async Task<int> SaveChangesAsync()
         {
-            return _context.SaveChanges();
+            return await _context.SaveChangesAsync();
         }
 
         public void Dispose()

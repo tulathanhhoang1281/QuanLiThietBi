@@ -14,7 +14,7 @@ namespace QuanLiThietBi.Domain.Models
         public int UserId { get; set; }
         public string Username { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public int Role { get; set; }
+        public string Role { get; set; }
         public int Status { get; set; }
 
         public virtual ICollection<TblBorrowing> TblBorrowings { get; set; }

@@ -1,4 +1,5 @@
-﻿using QuanLiThietBi.Application.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using QuanLiThietBi.Application.Interfaces;
 using QuanLiThietBi.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,16 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<IEnumerable<TblLocation>> GetAll()
+        {
+            return await _context.TblLocations.ToListAsync();
+        }
+
+        public async Task<TblLocation> GetByID(int id)
+        {
+            return await _context.TblLocations.FindAsync(id);
+        }
+
         public void Add(TblLocation entity)
         {
             _context.TblLocations.Add(entity);
@@ -32,15 +43,9 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             _context.TblLocations.Remove(entity);
         }
 
-        public TblLocation GetByID(int id)
+        public async Task SaveChangesAsync()
         {
-            return _context.TblLocations.Find(id);
+            await _context.SaveChangesAsync();
         }
-
-        public IEnumerable<TblLocation> GetAll()
-        {
-            return _context.TblLocations.ToList();
-        }
-
     }
 }

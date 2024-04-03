@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.BorrowDate)
             </th>
             <th>
@@ -21,9 +24,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Product)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
@@ -35,6 +35,9 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.User.Username)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.BorrowDate)
             </td>
             <td>
@@ -44,10 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Product.Manufacturer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Password)
+                @Html.DisplayFor(modelItem => item.Product.Name)
             </td>
             <td>
 @*                 @Html.DisplayFor(modelItem => item.Status) *@
@@ -55,15 +55,20 @@
                     {
                         <span class="badge badge-warning">Đã mượn</span>
                     }
-                    else
+                    else if (item.Status == 2)
                     {
                         <span class="badge badge-success">Đã trả</span>
                     }
+                    else
+                    {
+                        <span class="badge badge-danger">Bị từ chối</span>
+                    }
             </td>
             <td>
-                    <a asp-action="Edit" asp-route-id="@item.BorrowingId" class="btn btn-sm btn-info">Edit</a> |
+ @*                    <a asp-action="Edit" asp-route-id="@item.BorrowingId" class="btn btn-sm btn-info">Edit</a> | *@
                     <a asp-action="Details" asp-route-id="@item.BorrowingId" class="btn btn-sm btn-primary ml-1">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.BorrowingId" class="btn bt-sm btn-danger ml-1">Delete</a>
+                    <a asp-action="History" asp-route-id="@item.UserId">Lịch sử</a>
+@*                     <a asp-action="Delete" asp-route-id="@item.BorrowingId" class="btn bt-sm btn-danger ml-1">Delete</a> *@
             </td>
         </tr>
 }

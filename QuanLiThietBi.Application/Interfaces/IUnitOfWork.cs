@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using QuanLiThietBi.Domain.Models;
 namespace QuanLiThietBi.Application.Interfaces
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<TblCategory> CategoryRepository { get; }
         IRepository<TblProduct> ProductRepository { get; }
@@ -17,6 +17,6 @@ namespace QuanLiThietBi.Application.Interfaces
         IRepository<TblLocation> LocationRepository { get; }
         IRepository<TblEmployee> EmployeeRepository { get; }
         IRepository<TblBorrowing> BorrowingRepository { get; }
-        int SaveChanges();
+        Task<int> SaveChangesAsync();
     }
 }
