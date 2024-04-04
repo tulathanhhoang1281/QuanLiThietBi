@@ -39,7 +39,6 @@ namespace QuanLiThietBi.Controllers
                 // Lưu thông tin đăng nhập (session, cookie,...)
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
                 HttpContext.Session.SetString("Username", user.Username);
-                HttpContext.Session.SetString("Role", user.Role);
                 HttpContext.Session.Clear();
                 return RedirectToAction("Index", "Home");
             }

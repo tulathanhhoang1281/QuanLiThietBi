@@ -223,14 +223,14 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="#">Profile</a>
-                                    <a class="dropdown-item" href="#">@Html.ActionLink("Logout", "Logout", "Account")</a>
+                                    <a class="dropdown-item" href="#">@Html.ActionLink("Logout", "Logout", "LoginReg")</a>
                                 </div>
                             </li>
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">@Html.ActionLink("Login", "Login", "Account")</a>
+                            <li class="nav-item" style="margin-bottom: 65px">
+                                <a class="nav-link" href="#">@Html.ActionLink("Login", "Index", "LoginReg")</a>
                             </li>
                         }
                     </ul>

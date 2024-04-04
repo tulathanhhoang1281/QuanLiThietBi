@@ -159,5 +159,43 @@ namespace QuanLiThietBi.Controllers
         {
           return (_context.TblUsers?.Any(e => e.UserId == id)).GetValueOrDefault();
         }
+
+        public async Task<IActionResult> Lock(int? id)
+        {
+            if (id == null || _context.TblUsers == null)
+            {
+                return NotFound();
+            }
+
+            var tblUser = await _context.TblUsers.FindAsync(id);
+            if (tblUser == null)
+            {
+                return NotFound();
+            }
+
+            tblUser.Status = 0;
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Unlock(int? id)
+        {
+            if (id == null || _context.TblUsers == null)
+            {
+                return NotFound();
+            }
+
+            var tblUser = await _context.TblUsers.FindAsync(id);
+            if (tblUser == null)
+            {
+                return NotFound();
+            }
+
+            tblUser.Status = 1;
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

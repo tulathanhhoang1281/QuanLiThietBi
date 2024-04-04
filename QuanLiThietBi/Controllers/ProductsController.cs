@@ -171,6 +171,5 @@ namespace QuanLiThietBi.Controllers
         {
           return (_context.TblProducts?.Any(e => e.ProductId == id)).GetValueOrDefault();
         }
-
     }
 }

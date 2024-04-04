@@ -47,7 +47,15 @@
                     <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-sm btn-info">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.UserId" class="btn btn-sm btn-primary ml-1">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.UserId" class="btn bt-sm btn-danger ml-1">Delete</a>
-            </td>
+                    @if (item.Status != 0)
+                    {
+                        <a asp-action="Lock" asp-route-id="@item.UserId" class="btn btn-sm btn-warning ml-1">Lock</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Unlock" asp-route-id="@item.UserId" class="btn btn-sm btn-warning ml-1">Lock</a>
+                    }
+                </td>
         </tr>
 }
     </tbody>
