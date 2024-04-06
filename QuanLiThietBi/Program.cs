@@ -20,41 +20,29 @@ builder.Services.AddDbContext<qlthietbiContext>(options =>
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     options.UseSqlServer(connectionString);
 });
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme) .AddCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    //options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    options.LoginPath = new PathString("/LoginReg/Index");
+    options.LogoutPath = new PathString("/LoginReg/Logout");
+    options.ExpireTimeSpan = TimeSpan.FromDays(10);
+    options.SlidingExpiration = true;
+});
 
-//builder.Services.AddIdentity<TblUser, IdentityRole>(options =>
-//{
-//    options.Password.RequireDigit = true;
-//    options.Password.RequireLowercase = true;
-//    options.Password.RequireNonAlphanumeric = true;
-//    options.Password.RequireUppercase = true;
-//    options.Password.RequiredLength = 8;
-//})
-//        .AddEntityFrameworkStores<qlthietbiContext>()
-//        .AddDefaultTokenProviders();
-//builder.Services.AddMvc(options =>
-//{
-//    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-//});
-//builder.Services.AddSession(options =>
-//{
-//    options.IdleTimeout = TimeSpan.FromMinutes(30); 
-//});
-//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
-//{
-//    options.LoginPath = new PathString("/LoginReg/Index");
-//    options.ReturnUrlParameter = "urlRedirect";
-//    options.ExpireTimeSpan = TimeSpan.FromDays(10);
-//    options.SlidingExpiration = true;
-//});
+
+builder.Services.AddDistributedMemoryCache();           // Đăng ký dịch vụ lưu cache trong bộ nhớ (Session sẽ sử dụng nó)
+builder.Services.AddSession(cfg => {                    // Đăng ký dịch vụ Session
+    cfg.Cookie.Name = "qlthietbiSession";             // Đặt tên Session - tên này sử dụng ở Browser (Cookie)
+    cfg.IdleTimeout = new TimeSpan(24, 0, 0);    // Thời gian tồn tại của Session
+    cfg.Cookie.HttpOnly = true;
+    cfg.Cookie.IsEssential = true;
+});
 //builder.Services.AddScoped<IRepository<TblCategory>, CategoryRepository>();
 //builder.Services.AddScoped<IRepository<TblLocation>, LocationRepository>();
 //builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //builder.Services.AddHttpContextAccessor();
-builder.Services.AddDistributedMemoryCache();           // Đăng ký dịch vụ lưu cache trong bộ nhớ (Session sẽ sử dụng nó)
-builder.Services.AddSession(cfg => {                    // Đăng ký dịch vụ Session
-    cfg.Cookie.Name = "flowershopSession";             // Đặt tên Session - tên này sử dụng ở Browser (Cookie)
-    cfg.IdleTimeout = new TimeSpan(24, 0, 0);    // Thời gian tồn tại của Session
-});
+
 
 var app = builder.Build();
 
@@ -69,12 +57,14 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
 
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=LoginReg}/{action=Index}/");
 
 app.Run();

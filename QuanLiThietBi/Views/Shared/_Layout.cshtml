@@ -64,7 +64,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../Categories/Index">Quản lý danh mục</a>
                         <a class="collapse-item" href="../Products/Index">Quản lý sản phẩm thiết bị</a>
-                        <a class="collapse-item" href="buttons.html">Quản lý tài sản</a>
+@*                         <a class="collapse-item" href="buttons.html">Quản lý tài sản</a> *@
                         <a class="collapse-item" href="buttons.html">Quản lý chi phí</a>
                         <a class="collapse-item" href="buttons.html">Quản lý phiếu bảo trì</a>
                         <a class="collapse-item" href="../Borrowings/Index">Quản lý mượn</a>
@@ -124,10 +124,6 @@
                 <a class="nav-link collapsed" href="../Users/Index">
                     <i class="fas fa-user"></i>
                     <span>Quản lý người dùng</span>
-                </a>
-                <a class="nav-link collapsed" href="#">
-                    <i class="fas fa-wrench"></i>
-                    <span>Phân quyền người dùng</span>
                 </a>
             </li>
 
@@ -223,14 +219,14 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="#">Profile</a>
-                                    <a class="dropdown-item" href="#">@Html.ActionLink("Logout", "Logout", "LoginReg")</a>
+                                    <a class="dropdown-item" asp-controller="LoginReg" asp-action="Logout">Đăng xuất</a>
                                 </div>
                             </li>
                         }
-                        else
+                        @if(!User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item" style="margin-bottom: 65px">
-                                <a class="nav-link" href="#">@Html.ActionLink("Login", "Index", "LoginReg")</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index","LoginReg")">Đăng nhập</a>
                             </li>
                         }
                     </ul>

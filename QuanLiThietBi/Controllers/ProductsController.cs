@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using QuanLiThietBi.Application.Interfaces;
 using QuanLiThietBi.Domain.Models;
 using QuanLiThietBi.Infrastructure.UnitOfWork;
 using QuanLiThietBi.Models;
+using ZXing;
 
 namespace QuanLiThietBi.Controllers
 {
@@ -20,6 +22,47 @@ namespace QuanLiThietBi.Controllers
         {
             _context = context;
         }
+
+        public IActionResult Barcode(int? id)
+        {
+            if (id == null || _context.TblProducts == null)
+            {
+                return NotFound();
+            }
+
+            var tblProduct = _context.TblProducts.Find(id);
+            if (tblProduct == null)
+            {
+                return NotFound();
+            }
+
+            // Tạo mã vạch từ Serial Number
+            var barcodeWriter = new BarcodeWriterPixelData
+            {
+                Format = BarcodeFormat.CODE_128,
+                Options = new ZXing.Common.EncodingOptions
+                {
+                    Width = 300,
+                    Height = 100,
+                    Margin = 10
+                }
+            };
+
+            var result = barcodeWriter.Write(tblProduct.SerialNumber);
+
+            // Chuyển đổi dữ liệu bitmap thành mảng byte
+            using (var stream = new MemoryStream())
+            {
+                var bitmap = new Bitmap(result.Width, result.Height);
+                using (var graphics = Graphics.FromImage(bitmap))
+                {
+                    graphics.DrawImage(result, 0, 0);
+                    bitmap.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                    return File(stream.ToArray(), "image/png");
+                }
+            }
+        }
+
 
         // GET: Products
         public async Task<IActionResult> Index()
