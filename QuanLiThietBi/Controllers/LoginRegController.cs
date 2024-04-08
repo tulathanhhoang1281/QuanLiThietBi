@@ -34,6 +34,12 @@ namespace QuanLiThietBi.Controllers
             var user = _db.TblUsers.FirstOrDefault(u => u.Username == loginModel.Username && u.Password == loginModel.Password);
             if (user != null && user.Status == 1)
             {
+                var employee = await _db.TblEmployees.FirstOrDefaultAsync(e => e.Name == user.Username);
+                if (employee != null)
+                {
+                    ViewBag.DisplayName = employee.Name; 
+                }
+
                 var claims = new List<Claim> {
                         new Claim(ClaimTypes.Name, user.Username),
                         new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
@@ -67,13 +73,13 @@ namespace QuanLiThietBi.Controllers
                 ViewBag.ErrorMessage = "<div class='error'>Sai tên tài khoản hoặc mật khẩu</div>";
                 return View(loginModel);
             }
-        }   
+        }
 
         [HttpPost]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "LoginReg");
         }
-     }
+    }
 }

@@ -1,4 +1,7 @@
-﻿@model IEnumerable<QuanLiThietBi.Domain.Models.TblProduct>
+﻿@using System.Drawing
+@using ZXing
+@using ZXing.Common
+@model IEnumerable<QuanLiThietBi.Domain.Models.TblProduct>
 
 @{
     ViewData["Title"] = "Quản lý sản phẩm thiết bị";
@@ -41,6 +44,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Location)
             </th>
+            <th>Barcode</th>
             <th></th>
         </tr>
     </thead>
@@ -57,7 +61,8 @@
                 @Html.DisplayFor(modelItem => item.Manufacturer)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SerialNumber)
+@*                 @Html.DisplayFor(modelItem => item.SerialNumber)  *@
+                        <img src="@Url.Action("GenerateBarcode", "Products", new { serialNumber = item.SerialNumber })" alt="Barcode" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PurchaseDate)

@@ -32,7 +32,8 @@
             @Html.DisplayNameFor(model => model.SerialNumber)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SerialNumber)
+@*             @Html.DisplayFor(model => model.SerialNumber) *@
+            <img src="@Url.Action("Barcode", "Products", new { serialNumber = Model.SerialNumber })" alt="Barcode" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PurchaseDate)

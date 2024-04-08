@@ -15,6 +15,8 @@ namespace QuanLiThietBi.Controllers
 
         public IActionResult Index()
         {
+            var name = User.Identity.Name;
+            ViewBag.Name = name;
             return View();
         }
 

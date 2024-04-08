@@ -219,7 +219,10 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="#">Profile</a>
-                                    <a class="dropdown-item" asp-controller="LoginReg" asp-action="Logout">Đăng xuất</a>
+                                    <form asp-controller="LoginReg" asp-action="Logout" method="post">
+                                        <button type="submit" class="dropdown-item">Đăng xuất</button>
+                                    </form>
+
                                 </div>
                             </li>
                         }
