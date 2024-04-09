@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace QuanLiThietBi.Domain.Models
+namespace QuanLiThietBi.Models
 {
     public partial class TblProduct
     {
@@ -9,6 +9,7 @@ namespace QuanLiThietBi.Domain.Models
         {
             TblBorrowings = new HashSet<TblBorrowing>();
             TblComponents = new HashSet<TblComponent>();
+            TblMaintenances = new HashSet<TblMaintenance>();
             TblOrders = new HashSet<TblOrder>();
         }
 
@@ -27,6 +28,7 @@ namespace QuanLiThietBi.Domain.Models
         public virtual TblLocation Location { get; set; } = null!;
         public virtual ICollection<TblBorrowing> TblBorrowings { get; set; }
         public virtual ICollection<TblComponent> TblComponents { get; set; }
+        public virtual ICollection<TblMaintenance> TblMaintenances { get; set; }
         public virtual ICollection<TblOrder> TblOrders { get; set; }
     }
 }

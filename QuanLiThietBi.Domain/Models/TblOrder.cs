@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace QuanLiThietBi.Domain.Models
+namespace QuanLiThietBi.Models
 {
     public partial class TblOrder
     {

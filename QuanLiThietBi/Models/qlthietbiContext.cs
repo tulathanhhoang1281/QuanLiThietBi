@@ -21,6 +21,7 @@ namespace QuanLiThietBi.Models
         public virtual DbSet<TblComponent> TblComponents { get; set; } = null!;
         public virtual DbSet<TblEmployee> TblEmployees { get; set; } = null!;
         public virtual DbSet<TblLocation> TblLocations { get; set; } = null!;
+        public virtual DbSet<TblMaintenance> TblMaintenances { get; set; } = null!;
         public virtual DbSet<TblOrder> TblOrders { get; set; } = null!;
         public virtual DbSet<TblProduct> TblProducts { get; set; } = null!;
         public virtual DbSet<TblRole> TblRoles { get; set; } = null!;
@@ -40,7 +41,7 @@ namespace QuanLiThietBi.Models
             modelBuilder.Entity<TblBorrowing>(entity =>
             {
                 entity.HasKey(e => e.BorrowingId)
-                    .HasName("PK__tbl_borr__37A8ECDCA8C746E5");
+                    .HasName("PK__tbl_borr__37A8ECDCE88B99C7");
 
                 entity.ToTable("tbl_borrowings");
 
@@ -76,7 +77,7 @@ namespace QuanLiThietBi.Models
             modelBuilder.Entity<TblCategory>(entity =>
             {
                 entity.HasKey(e => e.CategoryId)
-                    .HasName("PK__tbl_cate__D54EE9B40F4E7F06");
+                    .HasName("PK__tbl_cate__D54EE9B4470F55F2");
 
                 entity.ToTable("tbl_categories");
 
@@ -94,7 +95,7 @@ namespace QuanLiThietBi.Models
             modelBuilder.Entity<TblComponent>(entity =>
             {
                 entity.HasKey(e => e.ComponentId)
-                    .HasName("PK__tbl_comp__AEB1DA59FE312448");
+                    .HasName("PK__tbl_comp__AEB1DA59DF0B5314");
 
                 entity.ToTable("tbl_components");
 
@@ -130,7 +131,7 @@ namespace QuanLiThietBi.Models
             modelBuilder.Entity<TblEmployee>(entity =>
             {
                 entity.HasKey(e => e.EmployeeId)
-                    .HasName("PK__tbl_empl__C52E0BA8A6DCD984");
+                    .HasName("PK__tbl_empl__C52E0BA8750D9AAD");
 
                 entity.ToTable("tbl_employees");
 
@@ -172,7 +173,7 @@ namespace QuanLiThietBi.Models
             modelBuilder.Entity<TblLocation>(entity =>
             {
                 entity.HasKey(e => e.LocationId)
-                    .HasName("PK__tbl_loca__771831EA96192A76");
+                    .HasName("PK__tbl_loca__771831EAA13B4F7C");
 
                 entity.ToTable("tbl_locations");
 
@@ -192,10 +193,46 @@ namespace QuanLiThietBi.Models
                     .HasColumnName("type");
             });
 
+            modelBuilder.Entity<TblMaintenance>(entity =>
+            {
+                entity.HasKey(e => e.MaintenanceId)
+                    .HasName("PK__tbl_main__9D754BEA51D7F24F");
+
+                entity.ToTable("tbl_maintenances");
+
+                entity.Property(e => e.MaintenanceId).HasColumnName("maintenance_id");
+
+                entity.Property(e => e.AssignTo)
+                    .HasMaxLength(255)
+                    .HasColumnName("assign_to");
+
+                entity.Property(e => e.CompletionDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("completion_date");
+
+                entity.Property(e => e.Description)
+                    .HasMaxLength(255)
+                    .HasColumnName("description");
+
+                entity.Property(e => e.MaintenanceDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("maintenance_date");
+
+                entity.Property(e => e.ProductId).HasColumnName("product_ID");
+
+                entity.Property(e => e.Status).HasColumnName("status");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.TblMaintenances)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__tbl_maint__produ__49C3F6B7");
+            });
+
             modelBuilder.Entity<TblOrder>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__tbl_orde__4659622992FA30AF");
+                    .HasName("PK__tbl_orde__465962293056CDC1");
 
                 entity.ToTable("tbl_orders");
 
@@ -229,7 +266,7 @@ namespace QuanLiThietBi.Models
             modelBuilder.Entity<TblProduct>(entity =>
             {
                 entity.HasKey(e => e.ProductId)
-                    .HasName("PK__tbl_prod__47027DF5EA2596FB");
+                    .HasName("PK__tbl_prod__47027DF5D448B225");
 
                 entity.ToTable("tbl_products");
 
@@ -282,7 +319,7 @@ namespace QuanLiThietBi.Models
             modelBuilder.Entity<TblRole>(entity =>
             {
                 entity.HasKey(e => e.RoleId)
-                    .HasName("PK__tbl_role__760965CC5D61F636");
+                    .HasName("PK__tbl_role__760965CCA782F21D");
 
                 entity.ToTable("tbl_roles");
 
@@ -300,7 +337,7 @@ namespace QuanLiThietBi.Models
             modelBuilder.Entity<TblUser>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__tbl_user__B9BE370FC7126E90");
+                    .HasName("PK__tbl_user__B9BE370F597BC4C8");
 
                 entity.ToTable("tbl_users");
 
