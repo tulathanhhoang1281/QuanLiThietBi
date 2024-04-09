@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace QuanLiThietBi.Models
+namespace QuanLiThietBi.Domain.Models
 {
     public partial class TblEmployee
     {

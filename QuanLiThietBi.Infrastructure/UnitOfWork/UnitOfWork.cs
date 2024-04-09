@@ -21,7 +21,8 @@ namespace QuanLiThietBi.Infrastructure.UnitOfWork
         private readonly IRepository<TblOrder> _orderRepository;
         private readonly IRepository<TblLocation> _locationRepository;
         private readonly IRepository<TblEmployee> _employeeRepository;
-        private readonly IRepository<TblBorrowing> _borrowingRepository; 
+        private readonly IRepository<TblBorrowing> _borrowingRepository;
+        private readonly IRepository<TblMaintenance> _maintenanceRepository;
         public UnitOfWork(qlthietbiContext context)
         {
             _context = context;
@@ -34,6 +35,7 @@ namespace QuanLiThietBi.Infrastructure.UnitOfWork
             _locationRepository = new Repository<TblLocation>(_context);
             _employeeRepository = new Repository<TblEmployee>(_context);
             _borrowingRepository = new Repository<TblBorrowing>(_context);
+            _maintenanceRepository = new Repository<TblMaintenance>(_context);
         }
 
         public IRepository<TblCategory> CategoryRepository => _categoryRepository;
@@ -53,6 +55,8 @@ namespace QuanLiThietBi.Infrastructure.UnitOfWork
         public IRepository<TblEmployee> EmployeeRepository => _employeeRepository;
 
         public IRepository<TblBorrowing> BorrowingRepository => _borrowingRepository;
+
+        public IRepository<TblMaintenance> MaintenanceRepository => _maintenanceRepository;
 
         public async Task<int> SaveChangesAsync()
         {

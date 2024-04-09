@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QuanLiThietBi.Application.Interfaces;
-using QuanLiThietBi.Models;
+using QuanLiThietBi.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,33 +21,34 @@ namespace QuanLiThietBi.Infrastructure.Repositories
 
         public void Add(TblMaintenance entity)
         {
-            _context.TblMain.Add(entity);
-            await _context.SaveChangesAsync();
+            _context.TblMaintenances.Add(entity);
+            _context.SaveChangesAsync();
         }
 
         public void Delete(TblMaintenance entity)
         {
-            throw new NotImplementedException();
+            _context.TblMaintenances.Remove(entity);
+            _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<TblMaintenance>> GetAll()
+        public async Task<IEnumerable<TblMaintenance>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.TblMaintenances.ToListAsync();
         }
 
-        public Task<TblMaintenance> GetByID(int id)
+        public async Task<TblMaintenance> GetByID(int id)
         {
-            throw new NotImplementedException();
+            return await _context.TblMaintenances.FindAsync(id);
         }
 
-        public Task SaveChangesAsync()
+        public async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
         }
 
         public void Update(TblMaintenance entity)
         {
-            throw new NotImplementedException();
+            _context.TblMaintenances.Update(entity);
         }
     }
 }

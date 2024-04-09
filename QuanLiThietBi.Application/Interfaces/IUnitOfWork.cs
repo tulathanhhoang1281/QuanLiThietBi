@@ -17,6 +17,7 @@ namespace QuanLiThietBi.Application.Interfaces
         IRepository<TblLocation> LocationRepository { get; }
         IRepository<TblEmployee> EmployeeRepository { get; }
         IRepository<TblBorrowing> BorrowingRepository { get; }
+        IRepository<TblMaintenance> MaintenanceRepository { get; }
         Task<int> SaveChangesAsync();
     }
 }
