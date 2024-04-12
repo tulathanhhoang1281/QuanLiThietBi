@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks;   
+//using QuanLiThietBi.Models;
 
 namespace QuanLiThietBi.Infrastructure.Repositories
 {
@@ -19,16 +20,17 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             _context = context;
         }
 
-        public void Add(TblMaintenance entity)
+        public async void Add(TblMaintenance entity)
         {
-            _context.TblMaintenances.Add(entity);
-            _context.SaveChangesAsync();
+            await _context.TblMaintenances.AddAsync(entity);
+            await SaveChangesAsync();
         }
 
-        public void Delete(TblMaintenance entity)
+        public async void Delete(int id)
         {
+            var entity = await _context.TblMaintenances.FindAsync(id);
             _context.TblMaintenances.Remove(entity);
-            _context.SaveChangesAsync();
+            await SaveChangesAsync();
         }
 
         public async Task<IEnumerable<TblMaintenance>> GetAll()
@@ -46,9 +48,10 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public void Update(TblMaintenance entity)
+        public async void Update(TblMaintenance entity)
         {
             _context.TblMaintenances.Update(entity);
         }
+
     }
 }

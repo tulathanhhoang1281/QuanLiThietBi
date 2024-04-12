@@ -21,10 +21,12 @@ namespace QuanLiThietBi.Controllers
     public class ProductsController : Controller
     {
         private readonly qlthietbiContext _context;
+        private readonly IRepository<TblProduct> _productRepository;
 
-        public ProductsController(qlthietbiContext context)
+        public ProductsController(qlthietbiContext context, IRepository<TblProduct> productRepository)
         {
             _context = context;
+            _productRepository = productRepository;
         }
 
         public string GenerateBarcode(string serialNumber)
@@ -50,8 +52,10 @@ namespace QuanLiThietBi.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            var qlthietbiContext = _context.TblProducts.Include(t => t.Category).Include(t => t.Location);
-            return View(await qlthietbiContext.ToListAsync());
+            //var qlthietbiContext = _context.TblProducts.Include(t => t.Category).Include(t => t.Location);
+            //return View(await qlthietbiContext.ToListAsync());
+            var products = await _productRepository.GetAll();
+            return View(products);
         }
 
         // GET: Products/Details/5

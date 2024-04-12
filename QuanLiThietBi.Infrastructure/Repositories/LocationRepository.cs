@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//using QuanLiThietBi.Models;
 namespace QuanLiThietBi.Infrastructure.Repositories
 {
     public class LocationRepository : IRepository<TblLocation>
@@ -28,9 +28,10 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             return await _context.TblLocations.FindAsync(id);
         }
 
-        public void Add(TblLocation entity)
+        public async void Add(TblLocation entity)
         {
             _context.TblLocations.Add(entity);
+            await _context.SaveChangesAsync();
         }
 
         public void Update(TblLocation entity)
@@ -38,9 +39,11 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             _context.TblLocations.Update(entity);
         }
 
-        public void Delete(TblLocation entity)
+        public async void Delete(int id)
         {
+            var entity = await _context.TblLocations.FindAsync(id);
             _context.TblLocations.Remove(entity);
+            await SaveChangesAsync();
         }
 
         public async Task SaveChangesAsync()

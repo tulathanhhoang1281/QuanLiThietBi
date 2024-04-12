@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace QuanLiThietBi.Domain.Models
+{ 
     public partial class TblMaintenance
     {
         public int MaintenanceId { get; set; }

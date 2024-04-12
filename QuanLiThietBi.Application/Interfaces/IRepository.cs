@@ -10,7 +10,7 @@ namespace QuanLiThietBi.Application.Interfaces
     {
         void Add(TEntity entity); 
         void Update(TEntity entity);
-        void Delete(TEntity entity);
+        void Delete(int id);
         Task<TEntity> GetByID(int id);
         Task<IEnumerable<TEntity>> GetAll();
         Task SaveChangesAsync();

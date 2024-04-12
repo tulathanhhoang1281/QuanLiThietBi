@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using QuanLiThietBi.Infrastructure;
 namespace QuanLiThietBi.Infrastructure.Repositories
 {
     public class ProductRepository : IRepository<TblProduct>
@@ -17,14 +17,22 @@ namespace QuanLiThietBi.Infrastructure.Repositories
         {
             _context = context;
         }
-        public void Add(TblProduct entity)
+        public async void Add(TblProduct entity)
         {
             _context.TblProducts.Add(entity);
+            await _context.SaveChangesAsync();
         }
 
         public void Delete(TblProduct entity)
         {
             _context.TblProducts.Remove(entity);
+        }
+
+        public async void Delete(int id)
+        {
+            var entity = await _context.TblProducts.FindAsync(id);
+            _context.TblProducts.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<TblProduct>> GetAll()
@@ -37,14 +45,14 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             return await _context.TblProducts.FindAsync(id);
         }
 
-        public Task SaveChangesAsync()
+        public async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
         }
 
         public void Update(TblProduct entity)
         {
-            throw new NotImplementedException();
+            _context.TblProducts.Update(entity);
         }
     }
 }

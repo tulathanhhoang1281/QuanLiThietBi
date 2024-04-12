@@ -48,6 +48,10 @@ namespace QuanLiThietBi.Controllers
         // GET: Warehouses/Create
         public IActionResult Create()
         {
+            TblLocation newLocation = new TblLocation
+            {
+                Type = "Kho"
+            };
             return View();
         }
 
@@ -60,6 +64,7 @@ namespace QuanLiThietBi.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(tblLocation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

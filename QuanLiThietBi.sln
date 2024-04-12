@@ -4,18 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLiThietBi", "QuanLiThietBi\QuanLiThietBi.csproj", "{46D97C52-263B-416F-94B9-951001712955}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLiThietBi.Domain", "QuanLiThietBi.Domain\QuanLiThietBi.Domain.csproj", "{9AF6CF44-DF47-4150-8732-C79D26F6FA7F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLiThietBi.Application", "QuanLiThietBi.Application\QuanLiThietBi.Application.csproj", "{000D8D9A-E978-4ED1-8750-29F426D3FB0E}"
 	ProjectSection(ProjectDependencies) = postProject
-		{46D97C52-263B-416F-94B9-951001712955} = {46D97C52-263B-416F-94B9-951001712955}
+		{175B10EC-DB71-4713-A2FB-00DE1D55BDD8} = {175B10EC-DB71-4713-A2FB-00DE1D55BDD8}
+		{6B8DD988-FC16-461F-93A2-F3B9FBA6FC63} = {6B8DD988-FC16-461F-93A2-F3B9FBA6FC63}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLiThietBi.Infrastructure", "QuanLiThietBi.Infrastructure\QuanLiThietBi.Infrastructure.csproj", "{DE437229-8793-4894-AC7D-307E9AE8401F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{46D97C52-263B-416F-94B9-951001712955} = {46D97C52-263B-416F-94B9-951001712955}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiThietBi.Domain", "QuanLiThietBi.Domain\QuanLiThietBi.Domain.csproj", "{6B8DD988-FC16-461F-93A2-F3B9FBA6FC63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiThietBi.Infrastructure", "QuanLiThietBi.Infrastructure\QuanLiThietBi.Infrastructure.csproj", "{413CDE24-3633-4D74-AF0D-1424F94F91C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiThietBi.Application", "QuanLiThietBi.Application\QuanLiThietBi.Application.csproj", "{175B10EC-DB71-4713-A2FB-00DE1D55BDD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,18 +25,18 @@ Global
 		{46D97C52-263B-416F-94B9-951001712955}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46D97C52-263B-416F-94B9-951001712955}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46D97C52-263B-416F-94B9-951001712955}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9AF6CF44-DF47-4150-8732-C79D26F6FA7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9AF6CF44-DF47-4150-8732-C79D26F6FA7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9AF6CF44-DF47-4150-8732-C79D26F6FA7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9AF6CF44-DF47-4150-8732-C79D26F6FA7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{000D8D9A-E978-4ED1-8750-29F426D3FB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{000D8D9A-E978-4ED1-8750-29F426D3FB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{000D8D9A-E978-4ED1-8750-29F426D3FB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{000D8D9A-E978-4ED1-8750-29F426D3FB0E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE437229-8793-4894-AC7D-307E9AE8401F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE437229-8793-4894-AC7D-307E9AE8401F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE437229-8793-4894-AC7D-307E9AE8401F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE437229-8793-4894-AC7D-307E9AE8401F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B8DD988-FC16-461F-93A2-F3B9FBA6FC63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B8DD988-FC16-461F-93A2-F3B9FBA6FC63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B8DD988-FC16-461F-93A2-F3B9FBA6FC63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B8DD988-FC16-461F-93A2-F3B9FBA6FC63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{413CDE24-3633-4D74-AF0D-1424F94F91C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{413CDE24-3633-4D74-AF0D-1424F94F91C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{413CDE24-3633-4D74-AF0D-1424F94F91C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{413CDE24-3633-4D74-AF0D-1424F94F91C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{175B10EC-DB71-4713-A2FB-00DE1D55BDD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{175B10EC-DB71-4713-A2FB-00DE1D55BDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{175B10EC-DB71-4713-A2FB-00DE1D55BDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{175B10EC-DB71-4713-A2FB-00DE1D55BDD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

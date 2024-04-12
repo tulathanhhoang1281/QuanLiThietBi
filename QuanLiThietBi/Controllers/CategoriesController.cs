@@ -15,12 +15,12 @@ namespace QuanLiThietBi.Controllers
     public class CategoriesController : Controller
     {
         private readonly qlthietbiContext _context;
-        private readonly UnitOfWork _unitOfWork;
+        //private readonly UnitOfWork _unitOfWork;
 
-        public CategoriesController(qlthietbiContext context, UnitOfWork unitOfWork )
+        public CategoriesController(qlthietbiContext context)
         {
             _context = context;
-            _unitOfWork = unitOfWork;
+            //_unitOfWork = unitOfWork;
         }
 
         // GET: Categories

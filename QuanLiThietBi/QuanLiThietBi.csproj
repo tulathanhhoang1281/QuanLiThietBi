@@ -74,8 +74,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuanLiThietBi.Application\QuanLiThietBi.Application.csproj" />
-    <ProjectReference Include="..\QuanLiThietBi.Infrastructure\QuanLiThietBi.Infrastructure.csproj" />
     <ProjectReference Include="..\QuanLiThietBi.Domain\QuanLiThietBi.Domain.csproj" />
+    <ProjectReference Include="..\QuanLiThietBi.Infrastructure\QuanLiThietBi.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

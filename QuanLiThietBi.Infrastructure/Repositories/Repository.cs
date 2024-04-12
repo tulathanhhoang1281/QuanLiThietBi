@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuanLiThietBi.Application.Interfaces;
+//using QuanLiThietBi.Models;
 namespace QuanLiThietBi.Infrastructure.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
@@ -16,19 +17,23 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             _context = context;
         }
 
-        public void Add(TEntity entity)
+        public async void Add(TEntity entity)
         {
             _context.Set<TEntity>().Add(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(TEntity entity)
+        public async void Update(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(TEntity entity)
+        public async void Delete(int id)
         {
+            var entity = await _context.Set<TEntity>().FindAsync(id);
             _context.Set<TEntity>().Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<TEntity> GetAll()

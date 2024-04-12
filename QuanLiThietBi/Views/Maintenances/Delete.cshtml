@@ -1,0 +1,64 @@
+﻿@model QuanLiThietBi.Domain.Models.TblMaintenance
+
+@{
+    ViewData["Title"] = "Xóa phiếu bảo trì";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Xóa phiếu bảo trì</h1>
+
+<h3>Bạn có chắc chắn muốn xóa phiếu bảo trì này?</h3>
+<div>
+    <h4>Phiếu bảo trì</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            MaintenanceId
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaintenanceId)
+        </dd>
+        <dt class="col-sm-2">
+            ProductId
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductId)
+        </dd>
+        <dt class="col-sm-2">
+            MaintenanceDate
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaintenanceDate)
+        </dd>
+        <dt class="col-sm-2">
+            Description
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Status
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class="col-sm-2">
+            AssignTo
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssignTo)
+        </dd>
+        <dt class="col-sm-2">
+            CompletionDate
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CompletionDate)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MaintenanceId" />
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        <a asp-action="Index">Hủy</a>
+    </form>
+</div>

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using QuanLiThietBi.Domain.Models;
 using QuanLiThietBi.Infrastructure.Repositories;
 using QuanLiThietBi.Application.Interfaces;
+using QuanLiThietBi.Infrastructure;
 namespace QuanLiThietBi.Infrastructure.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork

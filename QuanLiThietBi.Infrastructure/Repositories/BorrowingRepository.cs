@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//using QuanLiThietBi.Models;
 namespace QuanLiThietBi.Infrastructure.Repositories
 {
     public class BorrowingRepository : IBorrowingRepository

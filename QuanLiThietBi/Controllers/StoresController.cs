@@ -51,6 +51,10 @@ namespace QuanLiThietBi.Controllers
         // GET: Stores/Create
         public IActionResult Create()
         {
+            TblLocation newLocation = new TblLocation
+            {
+                Type = "Cửa hàng"
+            };
             return View();
         }
 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using QuanLiThietBi.Infrastructure;
 namespace QuanLiThietBi.Infrastructure.Repositories
 {
     public class CategoryRepository : IRepository<TblCategory>
@@ -28,19 +28,24 @@ namespace QuanLiThietBi.Infrastructure.Repositories
             return await _context.TblCategories.FindAsync(id);
         }
 
-        public void Add(TblCategory entity)
+        public async void Add(TblCategory entity)
         {
             _context.TblCategories.Add(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(TblCategory entity)
+        public async void Update(TblCategory entity)
         {
             _context.TblCategories.Update(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(TblCategory entity)
+        public async void Delete(int id)
         {
+            var entity = await _context.TblCategories.FindAsync(id);
             _context.TblCategories.Remove(entity);
+            await SaveChangesAsync();
+
         }
 
         public async Task SaveChangesAsync()

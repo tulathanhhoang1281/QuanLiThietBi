@@ -1,0 +1,65 @@
+﻿@model QuanLiThietBi.Domain.Models.TblMaintenance
+
+@{
+    ViewData["Title"] = "Chi tiết phiếu bảo trì";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Chi tiết phiếu bảo trì</h1>
+
+<div>
+    <h4>MaintenanceId: @Model.MaintenanceId</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            ProductId
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductId)
+        </dd>
+        <dt class="col-sm-2">
+            MaintenanceDate
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaintenanceDate)
+        </dd>
+        <dt class="col-sm-2">
+            Description
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Status
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Status == 0)
+            {
+                <span class="badge badge-warning">Đang bảo trì</span>
+            }
+            else if (Model.Status == 1)
+            {
+                <span class="badge badge-success">Đã hoàn thành</span>
+            }
+            else if (Model.Status == -1)
+            {
+                <span class="badge badge-danger">Đã hủy</span>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            AssignTo
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssignTo)
+        </dd>
+        <dt class="col-sm-2">
+            CompletionDate
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CompletionDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

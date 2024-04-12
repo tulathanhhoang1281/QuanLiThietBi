@@ -1,0 +1,78 @@
+﻿@model IEnumerable<QuanLiThietBi.Domain.Models.TblMaintenance>
+
+@{
+    ViewData["Title"] = "Quản lý phiếu bảo trì";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Quản lý phiếu bảo trì</h1>
+
+<p>
+    <a asp-action="Create">Thêm phiếu bảo trì</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaintenanceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompletionDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaintenanceDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @if (item.Status == 0)
+                    {
+                        <span class="badge badge-warning">Đang bảo trì</span>
+                    }
+                    else if (item.Status == 1)
+                    {
+                        <span class="badge badge-success">Đã hoàn thành</span>
+                    }
+                    else if (item.Status == -1)
+                    {
+                        <span class="badge badge-danger">Đã hủy</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompletionDate)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.MaintenanceId" class="btn btn-sm btn-primary">Chi tiết</a>
+                    <a asp-action="Edit" asp-route-id="@item.MaintenanceId" class="btn btn-sm btn-info">Chỉnh sửa</a>
+                    <a asp-action="Delete" asp-route-id="@item.MaintenanceId" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

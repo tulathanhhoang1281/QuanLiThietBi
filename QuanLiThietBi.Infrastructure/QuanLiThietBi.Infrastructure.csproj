@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.28" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.28" />
+    <!--<ProjectReference Include="..\QuanLiThietBi\QuanLiThietBi.csproj" />-->
     <ProjectReference Include="..\QuanLiThietBi.Application\QuanLiThietBi.Application.csproj" />
     <ProjectReference Include="..\QuanLiThietBi.Domain\QuanLiThietBi.Domain.csproj" />
   </ItemGroup>
