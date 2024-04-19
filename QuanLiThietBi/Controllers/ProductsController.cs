@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
+using IronBarCode;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -29,25 +30,19 @@ namespace QuanLiThietBi.Controllers
             _productRepository = productRepository;
         }
 
-        public string GenerateBarcode(string serialNumber)
-        {
-            BarcodeWriter<Bitmap> writer = new BarcodeWriter<Bitmap>();
-            writer.Format = BarcodeFormat.CODE_128;
-            writer.Options = new EncodingOptions { Height = 100, Width = 300 };
+        //private string GenerateBarcode(string serialNumber)
+        //{
+        //    var barcode = BarcodeWriter.CreateBarcode(serialNumber, BarcodeWriterEncoding.Code128);
+        //    var barcodeImage = barcode.RenderImage();
 
-            Bitmap barcodeBitmap = writer.Write(serialNumber);
-            return ImageToBase64(barcodeBitmap);
-        }
-
-        public string ImageToBase64(Image image)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                byte[] imageBytes = ms.ToArray();
-                return "data:image/png;base64," + Convert.ToBase64String(imageBytes);
-            }
-        }
+        //    using (MemoryStream ms = new MemoryStream())
+        //    {
+        //        barcodeImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+        //        byte[] imageBytes = ms.ToArray();
+        //        string base64Image = Convert.ToBase64String(imageBytes);
+        //        return "data:image/png;base64," + base64Image;
+        //    }
+        //}
 
         // GET: Products
         public async Task<IActionResult> Index()

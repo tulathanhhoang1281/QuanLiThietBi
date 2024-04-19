@@ -61,8 +61,8 @@
                 @Html.DisplayFor(modelItem => item.Manufacturer)
             </td>
             <td>
-@*                 @Html.DisplayFor(modelItem => item.SerialNumber)  *@
-                        <img src="@Url.Action("GenerateBarcode", "Products", new { serialNumber = item.SerialNumber })" alt="Barcode" />
+                @Html.DisplayFor(modelItem => item.SerialNumber) 
+                        @* <img src="@Url.Action("GenerateBarcode", "Products", new { serialNumber = item.SerialNumber })" alt="Barcode" /> *@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PurchaseDate)
